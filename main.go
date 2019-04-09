@@ -3,7 +3,7 @@ package main
 import (
 	"encoding/json"
 	"fmt"
-	types "go-excel/types"
+	"go-excel/types"
 	"io/ioutil"
 	"os"
 
