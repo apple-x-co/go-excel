@@ -1,4 +1,4 @@
-module go-excel
+module apple-x-co/go-excel
 
 go 1.12
 

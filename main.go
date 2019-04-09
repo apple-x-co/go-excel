@@ -1,9 +1,9 @@
 package main
 
 import (
+	"apple-x-co/go-excel/types"
 	"encoding/json"
 	"fmt"
-	"go-excel/types"
 	"io/ioutil"
 	"os"
 
