@@ -1,0 +1,143 @@
+{
+  "sheets": [
+    {
+      "name": "Sheet1",
+      "cells": [
+        {
+          "row": 1,
+          "column": 1,
+          "column_span": 5,
+          "value": "ピッキングリスト",
+          "style": {
+            "background_color": "#ffffff",
+            "alignment": {
+              "horizontal": "center"
+            }
+          }
+        },
+        {
+          "row": 2,
+          "column": 1,
+          "value": "通し番号",
+          "style": {
+            "font_weight": "bold",
+            "background_color": "#dddddd"
+          }
+        },
+        {
+          "row": 2,
+          "column": 2,
+          "value": "コード",
+          "style": {
+            "font_weight": "bold",
+            "background_color": "#dddddd"
+          }
+        },
+        {
+          "row": 2,
+          "column": 3,
+          "value": "商品名",
+          "style": {
+            "font_weight": "bold",
+            "background_color": "#dddddd"
+          }
+        },
+        {
+          "row": 2,
+          "column": 4,
+          "value": "数量",
+          "style": {
+            "font_weight": "bold",
+            "background_color": "#dddddd"
+          }
+        },
+        {
+          "row": 2,
+          "column": 5,
+          "value": "在庫数",
+          "style": {
+            "font_weight": "bold",
+            "background_color": "#dddddd"
+          }
+        },
+        {
+          "row": 2,
+          "column": 6,
+          "value": "金額",
+          "style": {
+            "font_weight": "bold",
+            "background_color": "#dddddd"
+          }
+        },
+
+        {
+          "row": 3,
+          "column": 1,
+          "value": "1"
+        },
+        {
+          "row": 3,
+          "column": 2,
+          "value": "PROD-001"
+        },
+        {
+          "row": 3,
+          "column": 3,
+          "value": "チョコレート"
+        },
+        {
+          "row": 3,
+          "column": 4,
+          "value": "10"
+        },
+        {
+          "row": 3,
+          "column": 5,
+          "value": "無制限"
+        },
+        {
+          "row": 3,
+          "column": 6,
+          "value": "6536"
+        },
+
+        {
+          "row": 4,
+          "column": 1,
+          "value": "1"
+        },
+        {
+          "row": 4,
+          "column": 2,
+          "value": "PROD-002"
+        },
+        {
+          "row": 4,
+          "column": 3,
+          "value": "アイスキャンディー"
+        },
+        {
+          "row": 4,
+          "column": 4,
+          "value": "5"
+        },
+        {
+          "row": 4,
+          "column": 5,
+          "value": "0"
+        },
+        {
+          "row": 4,
+          "column": 6,
+          "value": "27379"
+        }
+      ]
+    },
+    {
+      "name": "Sheet2",
+      "cells": [
+
+      ]
+    }
+  ]
+}
