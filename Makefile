@@ -10,6 +10,7 @@ base:
 
 develop:
 	go mod tidy
+	go fmt
 	$(MAKE) base BUILD_TAGS=$(BUILD_TAGS_DEVELOPMENT) BIN_NAME=bin/go-excel-dev-mac
 
 production:
