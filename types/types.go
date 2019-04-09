@@ -12,9 +12,9 @@ type Sheet struct {
 type Cell struct {
 	Row        int       `json:"row"`
 	Column     int       `json:"column"`
-	ColumnSpan int       `json:"column_span"`
+	ColumnSpan int       `json:"column_span,omitempty"`
 	Value      string    `json:"value"`
-	Style      CellStyle `json:"style"`
+	Style      CellStyle `json:"style,omitempty"`
 }
 
 type CellStyle struct {

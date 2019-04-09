@@ -4,12 +4,21 @@ json to excel
 ## How to use
 
 ```bash
+go-excel --file book.json --out book.xlsx
+```
+
+### show help
+
+```bash
 go-excel --help
 ```
 
+### show sample json
+
 ```bash
-go-excel --file book.json --out book.xlsx
+go-excel --sample
 ```
+
 
 ## Benchmark
 

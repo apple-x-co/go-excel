@@ -16,11 +16,20 @@ func main() {
 		inputPath  = flag.StringP("file", "f", "book.json", "file path of input json.")
 		outputPath = flag.StringP("out", "o", "book.xlsx", "file path of output excel.")
 		help       = flag.BoolP("help", "h", false, "show help message")
+		sample     = flag.BoolP("sample", "s", false, "show sample json")
 	)
 	flag.Parse()
 
 	if *help {
 		flag.PrintDefaults()
+		return
+	}
+	if *sample {
+		book := types.Book{}
+		book.Sheets = append([]types.Sheet{}, types.Sheet{Name: "Sheet1", Cells: []types.Cell{}})
+		book.Sheets[0].Cells = append([]types.Cell{}, types.Cell{Row: 1, Column: 1, Value: "A1"})
+		j, _ := json.MarshalIndent(book, "", " ")
+		fmt.Println(string(j))
 		return
 	}
 
