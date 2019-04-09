@@ -2,19 +2,27 @@ package main
 
 import (
 	"encoding/json"
-	"excel-test/types"
-	"flag"
 	"fmt"
+	types "go-excel/types"
 	"io/ioutil"
 	"os"
 
 	"github.com/360EntSecGroup-Skylar/excelize"
+	flag "github.com/spf13/pflag"
 )
 
 func main() {
-	inputPath := flag.String("file", "book.json", "file path of input json.")
-	outputPath := flag.String("out", "book.xlsx", "file path of output excel.")
+	var (
+		inputPath  = flag.StringP("file", "f", "book.json", "file path of input json.")
+		outputPath = flag.StringP("out", "o", "book.xlsx", "file path of output excel.")
+		help       = flag.BoolP("help", "h", false, "show help message")
+	)
 	flag.Parse()
+
+	if *help {
+		flag.PrintDefaults()
+		return
+	}
 
 	f, err := os.Open(*inputPath)
 	if err != nil {

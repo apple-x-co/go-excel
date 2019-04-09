@@ -3,6 +3,8 @@
 BUILD_TAGS_PRODUCTION = 'production'
 BUILD_TAGS_DEVELOPMENT = 'development unittest'
 
+all: develop production
+
 base:
 	go build -o $(BIN_NAME) -tags '$(BUILD_TAGS) netgo' -installsuffix netgo -ldflags '-s -w' main.go
 
@@ -14,4 +16,4 @@ production:
 	$(MAKE) base BUILD_TAGS=$(BUILD_TAGS_PRODUCTION) CGO_ENABLED=0 GOOS=linux GOARCH=amd64 BIN_NAME=bin/go-excel-linux64
 
 test-run:
-	./bin/go-excel-dev-mac -file book.json -out work/book.xlsx
+	./bin/go-excel-dev-mac --file ./book.json --out ./work/book.xlsx
