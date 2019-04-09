@@ -11,7 +11,7 @@ develop:
 	$(MAKE) base BUILD_TAGS=$(BUILD_TAGS_DEVELOPMENT) BIN_NAME=bin/go-excel-dev-mac
 
 production:
-	$(MAKE) base BUILD_TAGS=$(BUILD_TAGS_PRODUCTION) CGO_ENABLED=0 GOOS=linux GOARCH=amd64 BIN_NAME=bin/go-excel
+	$(MAKE) base BUILD_TAGS=$(BUILD_TAGS_PRODUCTION) CGO_ENABLED=0 GOOS=linux GOARCH=amd64 BIN_NAME=bin/go-excel-linux64
 
 test-run:
 	./bin/go-excel-dev-mac -file book.json -out work/book.xlsx
