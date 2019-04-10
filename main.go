@@ -11,20 +11,28 @@ import (
 	flag "github.com/spf13/pflag"
 )
 
+var version string
+var revision string
+
 func main() {
 	var (
-		inputPath  = flag.StringP("file", "f", "book.json", "file path of input json.")
-		outputPath = flag.StringP("out", "o", "book.xlsx", "file path of output excel.")
-		help       = flag.BoolP("help", "h", false, "show help message")
-		sample     = flag.BoolP("sample", "s", false, "show sample json")
+		inputPath   = flag.StringP("file", "f", "book.json", "file path of input json.")
+		outputPath  = flag.StringP("out", "o", "book.xlsx", "file path of output excel.")
+		showHelp    = flag.BoolP("help", "h", false, "show help message")
+		showSample  = flag.BoolP("sample", "s", false, "show sample json")
+		showVersion = flag.BoolP("version", "v", false, "show version")
 	)
 	flag.Parse()
 
-	if *help {
+	if *showHelp {
 		flag.PrintDefaults()
 		return
 	}
-	if *sample {
+	if *showVersion {
+		fmt.Println("version:", version+"."+revision)
+		return
+	}
+	if *showSample {
 		book := types.Book{}
 		book.Sheets = append([]types.Sheet{}, types.Sheet{Name: "Sheet1", Cells: []types.Cell{}})
 		book.Sheets[0].Cells = append([]types.Cell{}, types.Cell{Row: 1, Column: 1, Value: "A1"})
