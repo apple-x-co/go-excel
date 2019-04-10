@@ -16,7 +16,7 @@ var revision string
 
 func main() {
 	var (
-		inputPath   = flag.StringP("file", "f", "book.json", "file path of input json.")
+		inputPath   = flag.StringP("in", "i", "book.json", "file path of input json.")
 		outputPath  = flag.StringP("out", "o", "book.xlsx", "file path of output excel.")
 		showHelp    = flag.BoolP("help", "h", false, "show help message")
 		showSample  = flag.BoolP("sample", "s", false, "show sample json")

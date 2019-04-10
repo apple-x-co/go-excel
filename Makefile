@@ -34,4 +34,4 @@ clean:
 .PHONY: ci-test
 ci-test:
 	if [ ! -d work ]; then mkdir work; fi
-	./bin/$(BIN)-dev-mac --file ./book.json --out ./work/book.xlsx
+	./bin/$(BIN)-dev-mac --in ./book.json --out ./work/book.xlsx
