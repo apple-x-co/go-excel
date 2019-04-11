@@ -23,6 +23,13 @@ type CellStyle struct {
 	Alignment       CellStyleAlignment `json:"alignment"`
 }
 
+func (cellStyle *CellStyle) IsBold() bool {
+	return cellStyle.FontWeight == "bold"
+}
+func (cellStyle *CellStyle) IsAlignmentHorizontalCenter() bool {
+	return cellStyle.Alignment.Horizontal == "center"
+}
+
 type CellStyleAlignment struct {
 	Horizontal string `json:"horizontal"`
 }

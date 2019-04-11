@@ -74,17 +74,17 @@ func main() {
 
 			xlsx.SetCellValue(sheet.Name, cellName, string(cell.Value))
 
-			cellFormat := ""
-			if cell.Style.FontWeight == "bold" {
+			var cellFormat = ""
+			if cell.Style.IsBold() {
 				cellFormat += `"font":{"bold":true}`
 			}
-			if cell.Style.BackgroundColor != "" {
+			if backgroundColor := cell.Style.BackgroundColor; backgroundColor != "" {
 				if cellFormat != "" {
 					cellFormat += ","
 				}
-				cellFormat += `"fill":{"type":"pattern","color":["` + cell.Style.BackgroundColor + `"],"pattern":1}`
+				cellFormat += `"fill":{"type":"pattern","color":["` + backgroundColor + `"],"pattern":1}`
 			}
-			if cell.Style.Alignment.Horizontal == "center" {
+			if cell.Style.IsAlignmentHorizontalCenter() {
 				if cellFormat != "" {
 					cellFormat += ","
 				}
@@ -100,8 +100,8 @@ func main() {
 				xlsx.SetCellStyle(sheet.Name, cellName, cellName, style)
 			}
 
-			if cell.ColumnSpan != 0 {
-				mergeCellName, err := convertCellName(cell.Column+cell.ColumnSpan, cell.Row)
+			if columnSpan := cell.ColumnSpan; columnSpan != 0 {
+				mergeCellName, err := convertCellName(cell.Column+columnSpan, cell.Row)
 				if err != nil {
 					fmt.Println(err)
 					continue
