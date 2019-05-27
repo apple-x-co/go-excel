@@ -77,6 +77,11 @@ func (go_excel *go_excel) Execute() error {
 				fmt.Println(err)
 				continue
 			}
+			colName, err := convertColName(cell.Column)
+			if err != nil {
+				fmt.Println(err)
+				continue
+			}
 
 			xlsx.SetCellValue(sheet.Name, cellName, string(cell.Value))
 
@@ -104,6 +109,13 @@ func (go_excel *go_excel) Execute() error {
 					continue
 				}
 				xlsx.SetCellStyle(sheet.Name, cellName, cellName, style)
+			}
+
+			if cell.Style.Width != 0 {
+				xlsx.SetColWidth(sheet.Name, colName, colName, cell.Style.Width)
+			}
+			if cell.Style.Height != 0 {
+				xlsx.SetRowHeight(sheet.Name, cell.Row, cell.Style.Height)
 			}
 
 			if columnSpan := cell.ColumnSpan; columnSpan != 0 {
@@ -142,4 +154,18 @@ func convertCellName(col int, row int) (string, error) {
 	}
 
 	return fmt.Sprintf("%s%d", axis, row), nil
+}
+
+func convertColName(col int) (string, error) {
+	if col < 1 {
+		return "", fmt.Errorf("incorrect column number %d", col)
+	}
+
+	var axis string
+	for col > 0 {
+		axis = string((col-1)%26+65) + axis
+		col = (col - 1) / 26
+	}
+
+	return fmt.Sprintf("%s", axis), nil
 }

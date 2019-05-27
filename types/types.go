@@ -21,6 +21,8 @@ type CellStyle struct {
 	FontWeight      string             `json:"font_weight"`
 	BackgroundColor string             `json:"background_color"`
 	Alignment       CellStyleAlignment `json:"alignment"`
+	Width           float64            `json:"width,omitempty"`
+	Height          float64            `json:"height,omitempty"`
 }
 
 func (cellStyle *CellStyle) IsBold() bool {

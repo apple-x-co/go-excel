@@ -1,6 +1,6 @@
 BIN := 'go-excel'
 
-VERSION := '0.9.2'
+VERSION := '0.9.3'
 REVISION := '$(shell git rev-parse --short HEAD)'
 
 BUILD_TAGS_PRODUCTION := 'production'
@@ -38,4 +38,4 @@ clean:
 .PHONY: ci-test
 ci-test:
 	if [ ! -d work ]; then mkdir work; fi
-	./bin/$(BIN)-dev-mac --in ./book.json --out ./work/book.xlsx
+	./bin/darwin/$(BIN) --in ./book.json --out ./work/book.xlsx

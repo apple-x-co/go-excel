@@ -39,7 +39,8 @@
           "value": "商品名",
           "style": {
             "font_weight": "bold",
-            "background_color": "#dddddd"
+            "background_color": "#dddddd",
+            "width": 50
           }
         },
         {
