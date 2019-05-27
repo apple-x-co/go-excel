@@ -11,7 +11,8 @@
           "style": {
             "background_color": "#ffffff",
             "alignment": {
-              "horizontal": "center"
+              "horizontal": "center",
+              "vertical": "center"
             },
             "font_size": 20
           }
@@ -85,7 +86,13 @@
         {
           "row": 3,
           "column": 3,
-          "value": "チョコレート"
+          "value": "チョコレート",
+          "style": {
+            "alignment": {
+              "wrap_text": true,
+              "shrink_to_fit": true
+            }
+          }
         },
         {
           "row": 3,
@@ -116,7 +123,13 @@
         {
           "row": 4,
           "column": 3,
-          "value": "アイスキャンディー"
+          "value": "アイスキャンディー",
+          "style": {
+            "alignment": {
+              "wrap_text": true,
+              "shrink_to_fit": true
+            }
+          }
         },
         {
           "row": 4,

@@ -27,15 +27,11 @@ type CellStyle struct {
 	Border          []CellStyleBorder  `json:"border,omitempty"`
 }
 
-func (cellStyle *CellStyle) IsBold() bool {
-	return cellStyle.FontWeight == "bold"
-}
-func (cellStyle *CellStyle) IsAlignmentHorizontalCenter() bool {
-	return cellStyle.Alignment.Horizontal == "center"
-}
-
 type CellStyleAlignment struct {
-	Horizontal string `json:"horizontal"`
+	Horizontal  string `json:"horizontal"`
+	Vertical    string `json:"vertical"`
+	WrapText    bool   `json:"wrap_text"`
+	ShrinkToFit bool   `json:"shrink_to_fit"`
 }
 
 type CellStyleBorder struct {

@@ -11,10 +11,10 @@ type ExcelizeStyle struct {
 func NewExcelizeStyleByCellStyle(cellStyle *CellStyle) *ExcelizeStyle {
 	instance := new(ExcelizeStyle)
 
-	if cellStyle.IsBold() || cellStyle.FontSize != 0 {
+	if cellStyle.FontWeight == "bold" || cellStyle.FontSize != 0 {
 		instance.Font = new(ExcelizeStyleFont)
 	}
-	if cellStyle.IsBold() {
+	if cellStyle.FontWeight == "bold" {
 		instance.Font.Bold = true
 	}
 	if cellStyle.FontSize != 0 {
@@ -28,9 +28,23 @@ func NewExcelizeStyleByCellStyle(cellStyle *CellStyle) *ExcelizeStyle {
 		instance.Fill.Pattern = 1
 	}
 
-	if cellStyle.IsAlignmentHorizontalCenter() {
+	if cellStyle.Alignment.WrapText == true ||
+		cellStyle.Alignment.ShrinkToFit == true ||
+		cellStyle.Alignment.Horizontal != "" ||
+		cellStyle.Alignment.Vertical != "" {
 		instance.Alignment = new(ExcelizeStyleAlignment)
-		instance.Alignment.Horizontal = "center"
+	}
+	if cellStyle.Alignment.WrapText == true {
+		instance.Alignment.WrapText = true
+	}
+	if cellStyle.Alignment.ShrinkToFit == true {
+		instance.Alignment.ShrinkToFit = true
+	}
+	if cellStyle.Alignment.Horizontal != "" {
+		instance.Alignment.Horizontal = cellStyle.Alignment.Horizontal
+	}
+	if cellStyle.Alignment.Vertical != "" {
+		instance.Alignment.Vertical = cellStyle.Alignment.Vertical
 	}
 
 	if len(cellStyle.Border) != 0 {
@@ -65,7 +79,10 @@ type ExcelizeStyleFill struct {
 }
 
 type ExcelizeStyleAlignment struct {
-	Horizontal string `json:"horizontal,omitempty"`
+	Horizontal  string `json:"horizontal,omitempty"`
+	Vertical    string `json:"vertical,omitempty"`
+	WrapText    bool   `json:"wrap_text,omitempty"`
+	ShrinkToFit bool   `json:"shrink_to_fit"`
 }
 
 type ExcelizeStyleBorder struct {
