@@ -138,7 +138,44 @@
     {
       "name": "Sheet2",
       "cells": [
-
+        {
+          "row": 1,
+          "column": 1,
+          "style": {
+            "border": [
+              {
+                "type": "left",
+                "color": "0000FF",
+                "style": 3
+              },
+              {
+                "type": "top",
+                "color": "00FF00",
+                "style": 4
+              },
+              {
+                "type": "bottom",
+                "color": "FFFF00",
+                "style": 5
+              },
+              {
+                "type": "right",
+                "color": "FF0000",
+                "style": 6
+              },
+              {
+                "type": "diagonalDown",
+                "color": "A020F0",
+                "style": 7
+              },
+              {
+                "type": "diagonalUp",
+                "color": "A020F0",
+                "style": 8
+              }
+            ]
+          }
+        }
       ]
     }
   ]

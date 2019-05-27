@@ -5,6 +5,7 @@ type ExcelizeStyle struct {
 	Font      *ExcelizeStyleFont      `json:"font,omitempty"`
 	Fill      *ExcelizeStyleFill      `json:"fill,omitempty"`
 	Alignment *ExcelizeStyleAlignment `json:"alignment,omitempty"`
+	Border    []*ExcelizeStyleBorder  `json:"border,omitempty"`
 }
 
 func NewExcelizeStyleByCellStyle(cellStyle *CellStyle) *ExcelizeStyle {
@@ -32,11 +33,21 @@ func NewExcelizeStyleByCellStyle(cellStyle *CellStyle) *ExcelizeStyle {
 		instance.Alignment.Horizontal = "center"
 	}
 
+	if len(cellStyle.Border) != 0 {
+		for _, cellStyleBorder := range cellStyle.Border {
+			border := new(ExcelizeStyleBorder)
+			border.Type = cellStyleBorder.Type
+			border.Color = cellStyleBorder.Color
+			border.Style = cellStyleBorder.Style
+			instance.Border = append(instance.Border, border)
+		}
+	}
+
 	return instance
 }
 
 func (E *ExcelizeStyle) HasStyles() bool {
-	if E.Font != nil || E.Fill != nil || E.Alignment != nil {
+	if E.Font != nil || E.Fill != nil || E.Alignment != nil || E.Border != nil {
 		return true
 	}
 	return false
@@ -55,4 +66,10 @@ type ExcelizeStyleFill struct {
 
 type ExcelizeStyleAlignment struct {
 	Horizontal string `json:"horizontal,omitempty"`
+}
+
+type ExcelizeStyleBorder struct {
+	Type  string `json:"type"`
+	Color string `json:"color"`
+	Style int    `json:"style"`
 }

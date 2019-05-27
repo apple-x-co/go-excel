@@ -88,7 +88,7 @@ func (go_excel *go_excel) Execute() error {
 			style := types.NewExcelizeStyleByCellStyle(&cell.Style)
 			if style.HasStyles() {
 				styleJson, _ := json.Marshal(style)
-				fmt.Printf("%v\n", string(styleJson))
+				//fmt.Printf("%v\n", string(styleJson))
 				style, err := xlsx.NewStyle(string(styleJson))
 				if err != nil {
 					fmt.Println(err)

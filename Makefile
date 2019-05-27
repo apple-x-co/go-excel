@@ -1,6 +1,6 @@
 BIN := 'go-excel'
 
-VERSION := '0.9.4'
+VERSION := '0.9.5'
 REVISION := '$(shell git rev-parse --short HEAD)'
 
 BUILD_TAGS_PRODUCTION := 'production'

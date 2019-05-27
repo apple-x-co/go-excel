@@ -24,6 +24,7 @@ type CellStyle struct {
 	Alignment       CellStyleAlignment `json:"alignment"`
 	Width           float64            `json:"width,omitempty"`
 	Height          float64            `json:"height,omitempty"`
+	Border          []CellStyleBorder  `json:"border,omitempty"`
 }
 
 func (cellStyle *CellStyle) IsBold() bool {
@@ -35,4 +36,10 @@ func (cellStyle *CellStyle) IsAlignmentHorizontalCenter() bool {
 
 type CellStyleAlignment struct {
 	Horizontal string `json:"horizontal"`
+}
+
+type CellStyleBorder struct {
+	Type  string `json:"type"`
+	Color string `json:"color"`
+	Style int    `json:"style"`
 }
