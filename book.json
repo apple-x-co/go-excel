@@ -12,7 +12,8 @@
             "background_color": "#ffffff",
             "alignment": {
               "horizontal": "center"
-            }
+            },
+            "font_size": 20
           }
         },
         {

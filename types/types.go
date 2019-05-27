@@ -19,6 +19,7 @@ type Cell struct {
 
 type CellStyle struct {
 	FontWeight      string             `json:"font_weight"`
+	FontSize        int                `json:"font_size"`
 	BackgroundColor string             `json:"background_color"`
 	Alignment       CellStyleAlignment `json:"alignment"`
 	Width           float64            `json:"width,omitempty"`

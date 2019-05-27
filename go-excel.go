@@ -9,6 +9,7 @@ import (
 	flag "github.com/spf13/pflag"
 	"io/ioutil"
 	"os"
+	"strconv"
 )
 
 type go_excel struct {
@@ -86,8 +87,10 @@ func (go_excel *go_excel) Execute() error {
 			xlsx.SetCellValue(sheet.Name, cellName, string(cell.Value))
 
 			var cellFormat = ""
-			if cell.Style.IsBold() {
-				cellFormat += `"font":{"bold":true}`
+			if cell.Style.IsBold() && cell.Style.FontSize != 0 {
+				cellFormat += `"font":{"bold":true,"size":` + strconv.Itoa(cell.Style.FontSize) + `}`
+			} else if cell.Style.FontSize != 0 {
+				cellFormat += `"font":{"size":` + strconv.Itoa(cell.Style.FontSize) + `}`
 			}
 			if backgroundColor := cell.Style.BackgroundColor; backgroundColor != "" {
 				if cellFormat != "" {
