@@ -9,7 +9,6 @@ import (
 	flag "github.com/spf13/pflag"
 	"io/ioutil"
 	"os"
-	"strconv"
 )
 
 type go_excel struct {
@@ -86,27 +85,11 @@ func (go_excel *go_excel) Execute() error {
 
 			xlsx.SetCellValue(sheet.Name, cellName, string(cell.Value))
 
-			var cellFormat = ""
-			if cell.Style.IsBold() && cell.Style.FontSize != 0 {
-				cellFormat += `"font":{"bold":true,"size":` + strconv.Itoa(cell.Style.FontSize) + `}`
-			} else if cell.Style.FontSize != 0 {
-				cellFormat += `"font":{"size":` + strconv.Itoa(cell.Style.FontSize) + `}`
-			}
-			if backgroundColor := cell.Style.BackgroundColor; backgroundColor != "" {
-				if cellFormat != "" {
-					cellFormat += ","
-				}
-				cellFormat += `"fill":{"type":"pattern","color":["` + backgroundColor + `"],"pattern":1}`
-			}
-			if cell.Style.IsAlignmentHorizontalCenter() {
-				if cellFormat != "" {
-					cellFormat += ","
-				}
-				cellFormat += `"alignment":{"horizontal":"center"}`
-			}
-
-			if cellFormat != "" {
-				style, err := xlsx.NewStyle(`{` + cellFormat + `}`)
+			style := types.NewExcelizeStyleByCellStyle(&cell.Style)
+			if style.HasStyles() {
+				styleJson, _ := json.Marshal(style)
+				fmt.Printf("%v\n", string(styleJson))
+				style, err := xlsx.NewStyle(string(styleJson))
 				if err != nil {
 					fmt.Println(err)
 					continue
